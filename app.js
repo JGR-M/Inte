@@ -12,8 +12,9 @@ mongoose.connect('mongodb://localhost/27017', {
 .then(() => console.log('mongodb connected'))
 .catch(err => console.log(err));
 
-//load ideas model
-
+//load user model
+require('./models/User');
+const User = mongoose.model('user');
 
 //handlebars middleware
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
@@ -24,8 +25,13 @@ app.set('view engine', 'handlebars');
 app.get('/', (req, res) => {
     const title = 'Welcome1';
     res.render('index', {
-        title: title
+        user: user
     });
+});
+
+// contact form send link
+app.get('/contactMe', (req, res) => {
+    res.render('user/contact');           // goes to folder user and into file contact
 });
 
 // about route

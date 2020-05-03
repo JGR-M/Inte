@@ -2,12 +2,20 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 // create schema 
-const IdeaSchema = new Schema({
-    title: {
+const UserSchema = new Schema({
+    user: {
         type: String,
         required: true
     },
-    details: {
+    phone: {
+        type: String,
+        required: true
+    },
+    email: {
+        type: String,
+        required: true
+    },
+    message: {
         type: String,
         required: true
     },
@@ -17,4 +25,4 @@ const IdeaSchema = new Schema({
     }
 });
 
-mongoose.model('ideas', IdeaSchema);
+mongoose.model('user', UserSchema);
