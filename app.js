@@ -1,7 +1,18 @@
 const express = require('express');
 const exphbs  = require('express-handlebars');
+const mongoose = require('mongoose');
 
 const app = express();
+
+// connect to mongoose
+mongoose.connect('mongodb://localhost/27017', {
+    useUnifiedTopology: true,
+    useNewUrlParser: true
+})
+.then(() => console.log('mongodb connected'))
+.catch(err => console.log(err));
+
+//load ideas model
 
 
 //handlebars middleware
