@@ -1,6 +1,8 @@
 const express = require('express');
 const exphbs  = require('express-handlebars');
+const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+
 
 const app = express();
 
@@ -20,12 +22,16 @@ const User = mongoose.model('user');
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
+// body parser middleware ....                        access whatever is submited in form
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
+
 
 // index route
 app.get('/', (req, res) => {
     const title = 'Welcome1';
     res.render('index', {
-        user: user
+        title: title
     });
 });
 
@@ -33,6 +39,33 @@ app.get('/', (req, res) => {
 app.get('/contactMe', (req, res) => {
     res.render('user/contact');           // goes to folder user and into file contact
 });
+
+//process form
+app.post('/user', (req, res) => {
+    let errors = [];
+
+    if(!req.body.user){
+        errors.push({text:'Please add your Name'});
+    }
+    if(!req.body.phone){
+        errors.push({text:'Please add your Phone Number'});
+    }
+    if(!req.body.email){
+        errors.push({text:'Please add your E-mail'});
+    }
+
+     if(errors.length > 0){                 // this will make pop up windows, saying to please add something to the text
+        res.render('user/contact', {
+            errors: errors,
+            user: req.body.user,
+            phone: req.body.phone,
+            email: req.body.email,
+        });
+    } else {
+        res.send('passed');
+    }
+});
+
 
 // about route
 app.get('/about', (req, res) => {
