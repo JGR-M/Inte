@@ -73,8 +73,8 @@ app.post('/user', (req, res) => {
         .save()
         .then(user => {
             res.redirect('/');
-        })                                   // have to put another page,, saying ''submit was successdful,, 
-    }                                       // and button back to main page
+        })                                   // have to put another saying ''submit was successdful,, 
+    }                                       // and back to main page
 });
 
 
