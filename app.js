@@ -2,6 +2,7 @@ const express = require('express');
 const exphbs  = require('express-handlebars');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const path = require('path');
 
 
 const app = express();
@@ -23,9 +24,16 @@ const User = mongoose.model('user');
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
+
+// how to add images
+app.use(express.static(path.join(__dirname, 'public')));
+
+
+
 // body parser middleware ....                        access whatever is submited in form
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
+
 
 
 // index route
@@ -51,7 +59,7 @@ app.post('/user', (req, res) => {
     if(!req.body.phone){                            // text will appear as popup
         errors.push({text:'Please add your Phone Number'});
     }
-    if(!req.body.email){
+    if(!req.body.email){        
         errors.push({text:'Please add your E-mail'});
     }
 
@@ -83,7 +91,7 @@ app.get('/about', (req, res) => {
     res.render('about');
 });
 
-const port = 5000;
+const port = process.env.PORT || 5000;
 
 app.listen(port, () => {
     console.log(`Server started on port ${port}`);
