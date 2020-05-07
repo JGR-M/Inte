@@ -3,27 +3,91 @@
 {{else}}
 
 {{/each}}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-<div class="card card-body">
-    <h3>Contact Me</h3>
-    <form action="/user" method='post'>
-        <div class="form-group">
-            <label for="user">Name</label>
-            <input type="text" class="form-control" name="user" required>
+<br>
+<br>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col s12 m12 l12">
+            <img src="images/contact.png" alt="" srcset="" width="100%">
+
+            <br>
+            <br>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col s12 m12 l12">
+
+                        <h3>For more information <br>
+                            Send me an E-mail @</h3>
+                        <h3 style="color: blue;">german9989@outlook.com</h3>
+
+                        <br>
+                        <br>
+
+                        <h3>Contact: German</h3>
+                        <h2>832-857-0687</h2>
+                    </div>
+                </div>
+            </div>
+
         </div>
-        <div class="form-group">
-            <label for="phone">Phone number</label>
-            <input type="text" class="form-control" name="phone" required>
+
+        <br>
+        <br>
+
+
+
+
+        <div class="card card-body">
+            <h3 style="color: rgb(36, 36, 255);">Contact Me</h3>
+            <form action="/user" method='post'>
+                <div class="form-group">
+                    <label for="user">Name</label>
+                    <input type="text" class="form-control" name="user" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone number</label>
+                    <input type="text" class="form-control" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="text" class="form-control" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea type="text" class="form-control" name="message"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
         </div>
-        <div class="form-group">
-            <label for="email">E-mail</label>
-            <input type="text" class="form-control" name="email" required>
-        </div>
-        <div class="form-group">
-            <label for="message">Message</label>
-            <textarea type="text" class="form-control" name="message"></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+
+        <br>
+        <br>
+    </div>
 </div>
+</div>
+
+
+<style>
+    body {
+        background-image: url('images/blak-bkg.png');
+    }
+
+    h2 {
+        color: rgb(5, 5, 231);
+    }
+
+    h3 {
+        color: rgb(242, 249, 255);
+    }
+
+    h2,
+    h3 {
+        text-align: center;
+    }
+</style>

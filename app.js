@@ -26,7 +26,7 @@ app.set('view engine', 'handlebars');
 
 
 // how to add images
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('public'));    // to add images in site,, must use this
 
 
 
@@ -89,6 +89,11 @@ app.post('/user', (req, res) => {
 // about route
 app.get('/about', (req, res) => {
     res.render('about');
+});
+
+// website page
+app.get('/websites', (req, res) => {
+    res.render('websites');
 });
 
 const port = process.env.PORT || 5000;
