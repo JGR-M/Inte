@@ -96,6 +96,11 @@ app.get('/websites', (req, res) => {
     res.render('websites');
 });
 
+//   service page
+app.get('/services', (req, res) => {
+    res.render('services');
+});
+
 const port = process.env.PORT || 5000;
 
 app.listen(port, () => {
