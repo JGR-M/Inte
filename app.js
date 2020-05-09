@@ -9,12 +9,25 @@ const app = express();
 
 mongoose.Promise = global.Promise;
 // connect to mongoose                              database
-mongoose.connect('mongodb://localhost/intercodetinental', {
-    useUnifiedTopology: true,
-    useNewUrlParser: true
-})
-.then(() => console.log('mongodb connected'))
-.catch(err => console.log(err));
+
+
+const MongoClient = require('mongodb').MongoClient;
+
+const uri = "mongodb://intercodetinental:passcodeword>@intercodetinental-shard-00-00-iuhzp.mongodb.net:27017,intercodetinental-shard-00-01-iuhzp.mongodb.net:27017,intercodetinental-shard-00-02-iuhzp.mongodb.net:27017/test?ssl=true&replicaSet=Intercodetinental-shard-0&authSource=admin&retryWrites=true&w=majority";
+MongoClient.connect(uri, function(err, client) {
+  const collection = client.db("intercodetinental").collection("users");
+  // perform actions on the collection object
+  client.close();
+});
+
+
+
+// mongoose.connect('mongodb:/intercodetinental:3Axoq4xKaqnKqKkl@intercodetinental-shard-00-00-iuhzp.mongodb.net:27017,intercodetinental-shard-00-01-iuhzp.mongodb.net:27017,intercodetinental-shard-00-02-iuhzp.mongodb.net:27017/test?ssl=true&replicaSet=Intercodetinental-shard-0&authSource=admin&retryWrites=true&w=majority', {
+//     useUnifiedTopology: true,
+//     useNewUrlParser: true
+// })
+// .then(() => console.log('mongodb connected'))
+// .catch(err => console.log(err));
 
 //load user model
 require('./models/User');
