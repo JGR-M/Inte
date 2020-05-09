@@ -80,7 +80,7 @@ app.post('/user', (req, res) => {
         new User(newUser)
         .save()
         .then(user => {
-            res.redirect('/');
+            res.render('/');
         })                                   // have to put another saying ''submit was successdful,, 
     }                                       // and back to main page
 });
